@@ -22,7 +22,7 @@ export const projects: Project[] = [
   {
     title: "Bank Dashboard",
     description: "A fullstack banking dashboard UI.",
-    technologies: ["Next.js", "AWS", "Tailwind CSS"],
+    technologies: ["Next.js", "AWS", "Tailwind CSS", "Express"],
     githubLink: "https://github.com/afzbehroz/bank_aws",
     demoLink: "",
     image: "/projects/bank.png",
@@ -30,7 +30,7 @@ export const projects: Project[] = [
   {
     title: "Food Truck",
     description: "Food truck menu and order.",
-    technologies: ["React", "Tailwind CSS"],
+    technologies: ["React", "Tailwind CSS", "TypeScript"],
     githubLink: "https://github.com/afzbehroz/Examination-Sista",
     demoLink: "",
     image: "/projects/food-truck.png",

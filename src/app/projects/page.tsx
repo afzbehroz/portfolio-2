@@ -9,12 +9,14 @@ import { fadeInUp, staggerContainer, cardHoverSmall } from "@/utils/animations";
 
 export default function Projects() {
   return (
+    // Section with entrance animation
     <motion.section
       className="py-20 container max-w-7xl mx-auto px-4"
       variants={staggerContainer}
       initial="initial"
       animate="animate"
     >
+      {/* Heading */}
       <motion.h2
         className="text-3xl font-bold mb-12 text-center"
         initial={{ opacity: 0, y: -20 }}
@@ -24,6 +26,7 @@ export default function Projects() {
         Featured Projects
       </motion.h2>
 
+      {/* Project Grid */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-3 gap-8"
         variants={staggerContainer}
@@ -33,8 +36,9 @@ export default function Projects() {
             key={index}
             className="bg-white dark:bg-dark/50 rounded-lg shadow-md overflow-hidden"
             variants={fadeInUp}
-            {...cardHoverSmall}
+            {...cardHoverSmall} // hover scale/tilt effect
           >
+            {/* Project Image */}
             <motion.div
               className="relative aspect-video"
               whileHover={{ scale: 1.05 }}
@@ -50,6 +54,7 @@ export default function Projects() {
             </motion.div>
 
             <div className="p-6">
+              {/* Title */}
               <motion.h3
                 className="text-xl font-semibold text-center mb-2"
                 whileHover={{ x: 5 }}
@@ -58,6 +63,7 @@ export default function Projects() {
                 {project.title}
               </motion.h3>
 
+              {/* Description */}
               <motion.p
                 className="text-gray-600 dark:text-gray-400 text-sm text-center mb-4"
                 initial={{ opacity: 0 }}
@@ -67,6 +73,7 @@ export default function Projects() {
                 {project.description}
               </motion.p>
 
+              {/* Tech stack badges */}
               <motion.div
                 className="flex flex-wrap gap-2 justify-center mb-4"
                 initial={{ opacity: 0 }}
@@ -85,6 +92,7 @@ export default function Projects() {
                 ))}
               </motion.div>
 
+              {/* Links to GitHub and Demo */}
               <motion.div
                 className="flex justify-center gap-4 mt-4"
                 initial={{ opacity: 0 }}

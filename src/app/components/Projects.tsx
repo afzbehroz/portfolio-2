@@ -15,10 +15,12 @@ export default function Projects() {
       initial="initial"
       animate="animate"
     >
+      {/* Section Title */}
       <motion.h2 className="text-3xl font-bold mb-12 text-center" {...fadeInUp}>
         Featured Projects
       </motion.h2>
 
+      {/* Project Grid */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-3 gap-8"
         variants={staggerContainer}
@@ -30,6 +32,7 @@ export default function Projects() {
             variants={fadeInUp}
             {...cardHoverSmall}
           >
+            {/* Project Image */}
             <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
               <Image
                 src={project.image}
@@ -39,6 +42,8 @@ export default function Projects() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
+
+            {/* Project Title */}
             <motion.h3
               className="text-xl font-semibold text-center"
               whileHover={{ x: 5 }}
@@ -46,6 +51,8 @@ export default function Projects() {
             >
               {project.title}
             </motion.h3>
+
+            {/* Description */}
             <motion.p
               className="text-gray-600 dark:text-gray-400"
               initial={{ opacity: 0 }}
@@ -54,6 +61,8 @@ export default function Projects() {
             >
               {project.description}
             </motion.p>
+
+            {/* Tech Tags */}
             <motion.div
               className="flex flex-wrap gap-2 mb-4 mt-4 justify-center"
               initial={{ opacity: 0 }}
@@ -71,6 +80,8 @@ export default function Projects() {
                 </motion.span>
               ))}
             </motion.div>
+
+            {/* GitHub & Live Demo Links */}
             <motion.div
               className="flex gap-4 mt-2"
               initial={{ opacity: 0 }}

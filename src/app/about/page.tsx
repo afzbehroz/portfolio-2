@@ -1,23 +1,25 @@
 "use client";
+
 import React from "react";
 import { FaCode, FaCogs, FaLaptop, FaGraduationCap } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // Animation library
 import {
   fadeInUp,
   fadeInDown,
   fadeIn,
   staggerContainer,
   cardHover,
-} from "@/utils/animations";
+} from "@/utils/animations"; // Custom animation variants
 
 const About = () => {
   return (
     <motion.div
       className="container max-w-7xl mx-auto py-20"
-      variants={staggerContainer}
+      variants={staggerContainer} // Stagger child animations
       initial="initial"
       animate="animate"
     >
+      {/* Page Title */}
       <motion.h1
         className="text-4xl font-bold mb-8 text-center"
         {...fadeInDown}
@@ -40,10 +42,13 @@ const About = () => {
         <motion.h2 className="section-title" {...fadeInUp}>
           Skills
         </motion.h2>
+
+        {/* Skill Cards Grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={staggerContainer}
         >
+          {/* Frontend Skills */}
           <motion.div
             className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
             variants={fadeInUp}
@@ -59,6 +64,7 @@ const About = () => {
             </ul>
           </motion.div>
 
+          {/* Backend Skills */}
           <motion.div
             className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
             variants={fadeInUp}
@@ -73,6 +79,7 @@ const About = () => {
             </ul>
           </motion.div>
 
+          {/* Dev Tools / Cloud */}
           <motion.div
             className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
             variants={fadeInUp}
@@ -94,6 +101,8 @@ const About = () => {
         <motion.h2 className="section-title" {...fadeInUp}>
           Experience
         </motion.h2>
+
+        {/* Internship Entry */}
         <motion.div
           className="max-w-3xl mx-auto space-y-8"
           variants={staggerContainer}
@@ -128,6 +137,8 @@ const About = () => {
         <motion.h2 className="section-title" {...fadeInUp}>
           Education
         </motion.h2>
+
+        {/* School Entry */}
         <motion.div className="max-w-3xl mx-auto" variants={staggerContainer}>
           <motion.div
             className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"

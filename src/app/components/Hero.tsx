@@ -15,6 +15,7 @@ export const Hero = () => {
       className="py-28 container max-w-7xl mx-auto px-4"
     >
       <div className="max-w-3xl mx-auto text-center">
+        {/* Profile image */}
         <motion.div
           variants={scaleIn}
           transition={{ delay: 0.2 }}
@@ -29,6 +30,7 @@ export const Hero = () => {
           />
         </motion.div>
 
+        {/* Headline */}
         <motion.h1
           variants={fadeInUp}
           transition={{ delay: 0.3 }}
@@ -37,6 +39,7 @@ export const Hero = () => {
           Hey, I&#39;m <span className="text-primary">Behroz Afzali</span>
         </motion.h1>
 
+        {/* Tagline */}
         <motion.p
           variants={fadeInUp}
           transition={{ delay: 0.4 }}
@@ -46,6 +49,7 @@ export const Hero = () => {
           user-friendly web interfaces.
         </motion.p>
 
+        {/* Social media links */}
         <motion.div
           variants={fadeInUp}
           transition={{ delay: 0.5 }}
@@ -69,13 +73,14 @@ export const Hero = () => {
           </a>
         </motion.div>
 
+        {/* CTA buttons */}
         <motion.div
           variants={fadeInUp}
           transition={{ delay: 0.65 }}
           className="flex flex-col md:flex-row justify-center gap-4"
         >
           <Link
-            href="/Projects"
+            href="/projects"
             className="bg-primary inline-block w-full md:w-auto text-white px-8 py-3 rounded-lg hover:bg-primary/80 transition-colors"
           >
             View Projects

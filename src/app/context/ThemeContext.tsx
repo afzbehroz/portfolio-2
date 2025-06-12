@@ -10,37 +10,38 @@ interface ThemeContextType {
   setTheme: (theme: Theme) => void;
 }
 
+// Create the context
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
-  // update the theme
+  // Set theme in state, localStorage, and <html> class
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
-  // toggle the theme
+  // Toggle between light and dark
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  // initialize theme
+  // On mount: get saved or system theme, then apply
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null; // FIX: getItem not getTheme
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
       .matches
       ? "dark"
       : "light";
     const initialTheme = savedTheme || systemTheme;
     setTheme(initialTheme);
-    setMounted(true); // FIX: remove unnecessary toggle (setTheme already does it)
+    setMounted(true);
   }, []);
 
-  // prevent flash of wrong theme
+  // Avoid rendering until theme is applied (prevent flicker)
   if (!mounted) return null;
 
   return (
@@ -50,7 +51,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// use custom hook to use the ThemeContext
+// Custom hook to use the ThemeContext
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {

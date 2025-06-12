@@ -19,6 +19,7 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<FormStatus>("idle");
 
+  // Handles form submission to API route
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
@@ -26,21 +27,20 @@ export default function Contact() {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (!response.ok) throw new Error("Failed to send message");
 
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "" }); // Reset form
     } catch {
       setStatus("error");
     }
   };
 
+  // Updates form field values on input change
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -55,7 +55,7 @@ export default function Contact() {
       <h1 className="text-4xl font-bold mb-8 text-center">Contact Me</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Contact Info */}
+        {/* Static contact info */}
         <div className="space-y-8">
           <div>
             <h2 className="text-2xl font-semibold mb-4">Let’s Connect</h2>
@@ -94,9 +94,10 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Contact Form */}
+        {/* Contact form */}
         <div className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md">
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name input */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name
@@ -112,6 +113,7 @@ export default function Contact() {
               />
             </div>
 
+            {/* Email input */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email
@@ -127,6 +129,7 @@ export default function Contact() {
               />
             </div>
 
+            {/* Message textarea */}
             <div>
               <label
                 htmlFor="message"
@@ -145,6 +148,7 @@ export default function Contact() {
               />
             </div>
 
+            {/* Submit button + status messages */}
             <button
               type="submit"
               disabled={status === "loading"}

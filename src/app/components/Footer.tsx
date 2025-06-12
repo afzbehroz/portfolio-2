@@ -7,6 +7,7 @@ const Footer = () => {
     <footer className="bg-white dark:bg-dark border-t border-gray-200 dark:border-gray-800">
       <div className="container max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
+          {/* Logo and copyright */}
           <div className="mb-4 md:0">
             <Link href="/" className="text-xl font-bold text-primary">
               DevPath&trade;
@@ -15,6 +16,8 @@ const Footer = () => {
               {new Date().getFullYear()} DevPath. All rights reserved
             </p>
           </div>
+
+          {/* Social links */}
           <div className="flex space-x-6">
             <a
               href="https://github.com/afzbehroz?tab=repositories"

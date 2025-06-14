@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
+import { sendEmail } from "../../utils/sendEmail";
 
 interface FormData {
   name: string;
@@ -19,28 +20,20 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<FormStatus>("idle");
 
-  // Handles form submission to API route
+  // Handles form submission using EmailJS
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) throw new Error("Failed to send message");
-
+      await sendEmail(formData.name, formData.email, formData.message);
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" }); // Reset form
+      setFormData({ name: "", email: "", message: "" });
     } catch {
       setStatus("error");
     }
   };
 
-  // Updates form field values on input change
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -97,7 +90,6 @@ export default function Contact() {
         {/* Contact form */}
         <div className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md">
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name input */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name
@@ -113,7 +105,6 @@ export default function Contact() {
               />
             </div>
 
-            {/* Email input */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email
@@ -129,7 +120,6 @@ export default function Contact() {
               />
             </div>
 
-            {/* Message textarea */}
             <div>
               <label
                 htmlFor="message"
@@ -148,7 +138,6 @@ export default function Contact() {
               />
             </div>
 
-            {/* Submit button + status messages */}
             <button
               type="submit"
               disabled={status === "loading"}
